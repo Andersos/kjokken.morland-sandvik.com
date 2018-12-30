@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <link rel="preconnect" href="https://cf.geekdo-images.com/">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#2196f3">
+  <title>Boardgames</title>
+  <meta name="description" content="A list of my boardgames">
+  <style>
+  body {
+    background-color: snow;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 20px;
+    color: #252525;
+    margin: 0;
+  }
+  header {
+    background-color: #2196f3;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 64px;
+  }
+  header a {
+    margin-left: 20px;
+    font-size: 24px;
+    color: inherit;
+    text-decoration: none;
+  }
+  header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline;
+    font-size: 24px;
+    font-weight: 400;
+  }
+  h2 {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 400;
+  }
+  .playerlog-toggle {
+    margin-right: 20px;
+  }
+  .playerlog {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .error {
+    color: #856404;
+    background-color: #fff3cd;
+    padding: 20px;
+    margin: 0;
+  }
+  #range-label {
+    display: inline-block;
+    margin-left: 20px;
+    min-width: 120px;
+  }
+  .player-selector {
+    border: 1px solid rgba(0,0,0,.125);
+  }
+  .grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .hidden {
+    display: none;
+  }
+  .card {
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(0,0,0,.125);
+  }
+  .card-img {
+    height: 300px;
+    width: 300px;
+  }
+  .card-body {
+    width: 268px;
+    padding: .5rem;
+  }
+  .card-title {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .card-text {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .entry {
+    border: 1px solid rgba(0,0,0,.125);
+  }
+  .entry-text {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+  }
+  input[type=range] {
+    -webkit-appearance: none;
+    margin: 18px 0;
+    width: calc(100% - 160px);
+    max-width: 500px;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #367ebd;
+  }
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: #3071a9;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #367ebd;
+  }
+  a:focus, input:focus {
+    outline: solid red;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://api.andersos.net"><h1>Boardgames</h1></a>
+    <span class="playerlog-toggle">
+      <label for="playerlogtoggle">Playerlog
+        <input id="playerlogtoggle" name="playerlogtoggle" type="checkbox" />
+      </label>
+    </span>
+  </header>
+  <main>
+    <div class="player-selector">
+      <p id="error" class="error">Henter brettspill og spillerlog</p>
+      <label id="range-label" for="players">All games</label>
+      <input id="players" class="players" name="players" type="range" value="0" step="1" min="0" max="11" list="tickmarks">
+      <datalist id="tickmarks">
+        <option value="0" label="All" />
+        <option value="1" label="1" />
+        <option value="2" label="2" />
+        <option value="3" label="3" />
+        <option value="4" label="4" />
+        <option value="5" label="5" />
+        <option value="6" label="6" />
+        <option value="7" label="7" />
+        <option value="8" label="8" />
+        <option value="9" label="9" />
+        <option value="10" label="10" />
+        <option value="11" label="More" />
+      </datalist>
+    </div>
+    <div id="grid" class="grid"></div>
+    <section id="playerlog" class="playerlog hidden">
+      <h2>Statistics</h2>
+      <input type="checkbox" id="cap" name="cap" value="scales" />
+      <label for="cap">Show full lists</label>
+      <div id="stats">
+        <p>Most played games:</p>
+        <p>Unplayed games:</p>
+        <p>Misspelled games:</p>
+        <p>Most played persons:</p>
+        <p>Most wins:</p>
+      </div>
+      <h2>Playerlog</h2>
+      <div id="log" class="log"></div>
+    </section>
+  </main>
+  <template id="card">
+    <a class="card">
+      <img class="card-img">
+      <div class="card-body">
+        <h2 class="card-title"></h2>
+        <p class="card-text"></p>
+      </div>
+    </a>
+  </template>
+  <template id="entries">
+    <div class="entry">
+      <p class="entry-text"></p>
+    </div>
+  </template>
+  <script>
+  showFullList = false;
+  const playerSelector = document.querySelector(".player-selector");
+  const playerlog = document.getElementById("playerlog");
+  const playerlogtoggle = document.getElementById("playerlogtoggle");
+  const capListToggle = document.getElementById("cap");
+  const grid = document.getElementById("grid");
+  const error = document.getElementById("error");
+  const rangeLabel = document.getElementById("range-label");
+  const card = document.getElementById("card");
+  const log = document.getElementById("log");
+  const entries = document.getElementById("entries");
+
+  players.addEventListener('input', (e) => updatePlayers(e.target.value));
+  playerlogtoggle.addEventListener('change', (e) => togglePlayerlog(e.target.checked));
+  capListToggle.addEventListener('change', (e) => toggleCapList(e.target.checked));
+
+  function showValidGames(playercount) {
+    grid.querySelectorAll("a").forEach(game => {
+      if (parseInt(game.dataset.minplayers, 10) <= parseInt(playercount, 10) && parseInt(game.dataset.maxplayers, 10) >= parseInt(playercount, 10)) {
+        game.classList.remove("hidden");
+      } else {
+        game.classList.add("hidden");
+      }
+      if (playercount === '0') {
+        game.classList.remove("hidden");
+      }
+    })
+  }
+
+  function toggleCapList(toggled) {
+    if(toggled) {
+      showFullList = true;
+      updatePlayerlogStats(playerlogData, boardgamesData);
+    } else {
+      showFullList = false;
+      updatePlayerlogStats(playerlogData, boardgamesData);
+    }
+  }
+
+  function togglePlayerlog(toggled) {
+    if(toggled) {
+      playerlog.classList.remove("hidden");
+      grid.classList.add("hidden");
+      playerSelector.classList.add("hidden");
+    } else {
+      playerlog.classList.add("hidden");
+      grid.classList.remove("hidden");
+      playerSelector.classList.remove("hidden");
+    }
+  }
+
+  function updatePlayers(playercount) {
+    showValidGames(playercount);
+    if (playercount === '0') {
+      rangeLabel.innerHTML = "All games"
+    } else if (playercount === '1') {
+      rangeLabel.innerHTML = "1 player";
+    } else if (playercount === '11') {
+      rangeLabel.innerHTML = "More players";
+    } else {
+      rangeLabel.innerHTML = `${playercount} players`;
+    }
+  }
+
+  function makeEntry(entry) {
+    if(entry.stats === false) {
+      return document.createTextNode("");
+    }
+    let newEntry = document.importNode(entries.content, true);
+    let winnersText;
+    if (Object.prototype.hasOwnProperty.call(entry, 'winners') && entry.winners.length > 0) {
+      winnersText = entry.winners.join(', ');
+    } else {
+      winnersText = "Ingen vinnere";
+    }
+    let playersText;
+    if (Object.prototype.hasOwnProperty.call(entry, 'players') && typeof entry.players === 'object' && entry.players.length > 0) {
+      playersText = entry.players.join(', ');
+    } else {
+      playersText = "Ingen spillere";
+    }
+
+    newEntry.querySelector("p").textContent = `🕰 ${entry.date} 🎲 ${entry.game} 👑 ${winnersText}  👥 ${playersText}.`;
+    if (entry.comment) {
+      newEntry.querySelector("p").title = entry.comment;
+    }
+    return newEntry;
+  }
+
+  function addPlayerlog(playerlog) {
+    playerlog.sort(function(a,b){
+      return new Date(`${b.date}T00:00:00+00:00`) - new Date(`${a.date}T00:00:00+00:00`);
+    }).map(entry => {
+      log.appendChild(makeEntry(entry));
+    })
+  }
+
+  function makeCard(game) {
+    let newCard = document.importNode(card.content, true);
+    newCard.querySelector("a").href = game.link;
+    newCard.querySelector("a").dataset.minplayers = game.minplayers;
+    newCard.querySelector("a").dataset.maxplayers = game.maxplayers;
+    newCard.querySelector("h2").textContent = game.name;
+    newCard.querySelector("img").src = game.thumbnail;
+    newCard.querySelector("img").alt = game.name;
+    newCard.querySelector("p").textContent = `⏳ ${game.time} 👥 ${game.minplayers} - ${game.maxplayers}`;
+    return newCard;
+  }
+
+  function addBoardgames(games) {
+    games.map(game => {
+      grid.appendChild(makeCard(game));
+    })
+  }
+
+  function getGamesPlayed(playerlog) {
+    let counts = {}
+    playerlog.map(play => {
+      if(play.game !== undefined) {
+        counts[play.game] = (counts[play.game] || 0) + 1;
+      }
+    })
+    return Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]}).filter(key => counts[key] > 3 || showFullList).map(key => ` ${key} (${counts[key]})`);
+  }
+
+  function getPlayersPlayed(playerlog) {
+    let counts = {}
+    playerlog.map(play => {
+      if(Object.prototype.hasOwnProperty.call(play, 'players') && play.players.length > 0 && play.stats !== false) {
+        play.players.map(player => {
+          counts[player] = (counts[player] || 0) + 1;
+        })
+      }
+    })
+    return Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]}).filter(key => counts[key] > 3 || showFullList).map(key => ` ${key} (${counts[key]})`);
+  }
+
+  function getWinners(playerlog) {
+    let counts = {}
+    playerlog.map(play => {
+      if(Object.prototype.hasOwnProperty.call(play, 'winners') && play.winners.length > 0) {
+        play.winners.map(winner => {
+          counts[winner] = (counts[winner] || 0) + 1;
+        })
+      }
+    })
+    return Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]}).filter(key => counts[key] > 2 || showFullList).map(key => ` ${key} (${counts[key]})`);
+  }
+
+  function getUnplayedGames(playerlog, gamelist) {
+    playedArray = Array.from(playerlog.map(log => log.game));
+    return gamelist.filter(checkGame => !playedArray.includes(checkGame.name)).map(game => game.name).join(", ");
+  }
+
+
+  function getMisspelledNames(playerlog, gamelist) {
+    const excluded = ["Game of Life", "Ho Ho Homicide"];
+    misspelledNames = playerlog.filter(log => !gamelist.map(game => game.name).includes(log.game) && !excluded.includes(log.game)).map(log =>
+      log.game);
+
+      if (misspelledNames.length > 0) {
+        return `Misspelled names in playerlog: ${misspelledNames}`
+      }
+      return '';
+    }
+
+    function updatePlayerlogStats(playerlog, gamelist) {
+      let gamesPlayed = getGamesPlayed(playerlog);
+      let playersPlayed = getPlayersPlayed(playerlog);
+      let winners = getWinners(playerlog);
+      let unplayedGames = getUnplayedGames(playerlog, gamelist);
+      let misspelledNames = getMisspelledNames(playerlog, gamelist);
+
+      let ps = document.getElementById("stats").querySelectorAll("p");
+      ps[0].textContent = `Most played games: ${gamesPlayed}`;
+      ps[1].textContent = `Unplayed games: ${unplayedGames}`;
+      ps[2].textContent = `${misspelledNames}`;
+      ps[3].textContent = `Most played persons: ${playersPlayed}`;
+      ps[4].textContent = `Most wins: ${winners}`;
+    }
+
+    function updateErrorText(text) {
+      error.innerHTML = text;
+    }
+
+    function removeError() {
+      error.remove();
+    }
+
+    function fetchPlayerlog(gamelist) {
+      fetch('https://api.andersos.net/playerlog.json').then((response) => {
+        return response.json();
+      }).then((json) => {
+        playerlogData = json;
+        addPlayerlog(json);
+        updatePlayerlogStats(json, gamelist);
+      }).catch((e) => {
+        console.log(e);
+      });
+    }
+
+    fetch('https://api.andersos.net/boardgames.json').then((response) => {
+      return response.json();
+    }).then((json) => {
+      boardgamesData = json;
+      addBoardgames(json);
+      removeError();
+      fetchPlayerlog(json);
+    }).catch((e) => {
+      console.log(e);
+      updateErrorText('Kunne ikke hente brettspill');
+    });
+  </script>
+</body>
+</html>
