@@ -3,4 +3,4 @@
     X-Frame-Options: DENY
     X-Content-Type-Options: nosniff
     X-XSS-Protection: 1; mode=block
-    Content-Security-Policy: default-src 'none'; connect-src https://api.andersos.net; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'; script-src 'sha256-2VOqwDGiGfCVeuw1xYZm+mrg0vBV1GSbIs7OTkWnQKI='; style-src 'sha256-XmfdkAnXd9mYwTCN79GqHl9B5t02BcDxHD3q3K1CKBc='; img-src 'self' https://api.andersos.net;
+    Content-Security-Policy: default-src 'none'; connect-src https://api.andersos.net; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'; script-src 'sha256-6YbAx0qtFnOUKSiXssEPDB4fBxzH8qNFWyNBdrp8rIY='; style-src 'sha256-l3jnGUkIaXQjkF3obilGGiSUQvgax+PE0dqhO7deKeI='; img-src 'self' https://api.andersos.net;
