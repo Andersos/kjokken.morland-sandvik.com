@@ -1,0 +1,16 @@
+{
+  "name": "krydder.andersos.net",
+  "description": "An overview of the spices we have",
+  "version": "1.0.0",
+  "homepage": "https://krydder.andersos.net",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Andersos/krydder.morland-sandvik.com.git"
+  },
+  "scripts": {
+    "start": "live-server --port=8080"
+  },
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
