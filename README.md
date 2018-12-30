@@ -1,4 +1,4 @@
-# [kjøkken.morland-sandvik.com](https://kjøkken.morland-sandvik.com)
+# [kjokken.morland-sandvik.com](https://kjokken.morland-sandvik.com)
 
 An overview of the spices we have in the cabinet.
 
