@@ -1,11 +1,11 @@
 {
-  "name": "kjokken.andersos.net",
-  "description": "An overview of the spices we have",
+  "name": "kjokken.morland-sandvik.com",
+  "description": "An overview of food we have",
   "version": "1.0.0",
-  "homepage": "https://kjøkken.andersos.net",
+  "homepage": "kjokken.morland-sandvik.com",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Andersos/krydder.morland-sandvik.com.git"
+    "url": "git@github.com:Andersos/kjokken.morland-sandvik.com.git"
   },
   "scripts": {
     "start": "live-server --port=8080"
