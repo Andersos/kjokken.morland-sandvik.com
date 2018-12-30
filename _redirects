@@ -1,1 +1,2 @@
-// TODO
+# Redirect default Netlify subdomain to primary domain
+https://kjokken.netlify.com/* https://kjokken.morland-sandvik.com/:splat 301!
